@@ -4,12 +4,13 @@ import cv2
 import tensorflow as tf
 import time
 from tensorflow.keras.models import load_model
+# Add the class names
 class_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-               'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'del', 'noth', 'space']
+               'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Y', 'space']
 
-model = load_model('C:/Users/Mahe/Downloads/resnet1.h5')
-print('here1')
+model = load_model('/path-to weights-file/resnet1.h5')
 
+# illumination correction
 def adjust_gamma(image, gamma=1.0):
 
    invGamma = 1.0 / gamma
@@ -30,7 +31,6 @@ while(cap.isOpened):
     frame = adjust_gamma(frame, gamma=0.7)
     crop = np.array(frame[51:450, 101:500,:])
 
-    # cv2.imshow('frame2',crop )
 
     dim = (200, 200)
     img = cv2.resize(crop, dim, interpolation = cv2.INTER_AREA)
@@ -45,7 +45,5 @@ while(cap.isOpened):
 # When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
-# cv2.imshow('crop',gray/255.0)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+
 
