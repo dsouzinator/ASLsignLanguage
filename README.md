@@ -1,4 +1,6 @@
 # ASLsignLanguage
+This project was done in colaboration with [Chirag Gomber](https://github.com/ArtistBanda) 
+
 A deep learning network trained to identify ASL alphabets from a live video stream. The letters X, Z, 'nothing' and 'cancel' were excluded from this dataset.
 
 A future goal is to add these letters into a word along with an autocorrect feature.
